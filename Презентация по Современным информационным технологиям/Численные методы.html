@@ -1,0 +1,845 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		
+		<script>
+			function Calc()
+			{
+				var k;
+				int n = 3;									
+				var b = new Array(3);
+				var A = new Array(3,3);
+									
+				b[1]=document.getElementById("4").value;
+				b[2]=document.getElementById("8").value;	
+				b[2]=document.getElementById("12").value;
+									
+				//Заполнили x
+				A[1,1]=document.getElementById("1").value;
+				A[2,1]=document.getElementById("5").value;
+				A[3,1]=document.getElementById("9").value;
+									
+				//Заполнили y
+				A[1,2]=document.getElementById("2").value;
+				A[2,2]=document.getElementById("6").value;
+				A[3,2]=document.getElementById("10").value;
+									
+				//Заполнили z
+				A[1,3]=document.getElementById("3").value;
+				A[2,3]=document.getElementById("7").value;
+				A[3,3]=document.getElementById("11").value;
+					
+				//обнулили нижний треугольник
+				for (k = 1; n-1; k++) 
+				{
+					for (i = k+1; n; i++)
+					{
+						b[i] = b[i] - (A[i,k] * b[i]) / A[k,k];
+					
+						for (j = 1; n; j++)
+						{
+							A[i,j] = A[i,j] - (A[i,k] * A[k,j]) / A[k,k]; 
+						}
+					}
+				}	
+				
+				//обнулили верхний треугольник
+				for (k = N; 1; k--) 
+				{
+					for (i = 1; k-1; i++)
+					{
+						b[i] = b[i] - (A[i,k] * b[k]) / A[k,k];
+					
+						for (j = 1; n; j++)
+						{
+							A[i,j] = A[i,j] - (A[i,k] * A[k,j]) / A[k,k]; 
+						}
+					}
+				}	
+				
+				//делим элементы массива b на диагональные элементы матрицы А
+				for (i = 1; n; i++)
+				{
+					b[i] = b[i] / A[i,i];
+				}
+				
+				alert(b[1]);
+		</script>
+		
+		
+		
+		<script language="JavaScript"> 
+
+		function fbin (a,b,eps) 
+		
+		{ 
+			var fs=form1.func.value; //функция
+			
+			var x = a; // левая граница отрезка
+
+			var fa = eval(fs); //значение функции в точке 
+
+			var  = b; 	 
+
+			var fc; 
+
+			var с; 
+
+			var r; 
+
+			if (Math.abs(b-a) < eps)
+
+			{ 
+				r = (a+b)/2;
+			} 
+
+			else 
+
+			{
+				c =(a+b)/2;
+
+				x=c; 
+				
+				fc=eval(fs); 
+
+				if (fa*fc < 0)
+
+				{ 
+					r=fbin(a,c,eps)
+				} 
+
+				else
+
+				{
+					r=fbin(c,b,eps)
+				} 
+
+			}
+
+			return r 
+
+		}
+
+	function ftest(obj) 
+
+	{
+		var fs=forml.func.value; 
+
+		var x=obj.res.value;
+
+		var tes=eval(fs); 
+
+		obj.test.value=tes; 
+
+	}
+</script> 
+
+
+
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown data-separator-nodes="^Note:">
+				<script type="text/template">
+				# Численные методы
+				
+				Note: Титульный лист
+				</script>
+				</section>
+			<!--
+			КОММЕНТ
+			 -->				
+				
+				
+				<section data-markdown data-separator-nodes="^Note:"> 
+				<script type="text/template">
+				## Определение численных методов
+				Численные методы — это методы приближенного решения задач прикладной математики, 
+				основанные на реализации алгоритмов, соответствующих математическим моделям.
+				
+				Note:
+				Численные методы — это методы приближенного решения задач прикладной математики,
+				основанные на реализации алгоритмов,
+				соответствующих математическим моделям.
+				</script>
+				</section>
+				
+				
+				
+				
+				<section data-markdown data-separator-nodes="^Note:"> 
+				<script type="text/template">
+				## Определение СЛАУ
+				Система линейных алгебраических уравнений (СЛАУ) — система уравнений, каждое уравнение в которой является линейным — алгебраическим уравнением первой степени.
+				
+				Note:
+				Система линейных алгебраических уравнений (СЛАУ) — система уравнений, каждое уравнение в которой является линейным 
+				— алгебраическим уравнением первой степени.
+				</script>
+				</section>
+				
+				
+				
+				
+				<section data-markdown data-separator-nodes="^Note:"> 
+				<script type="text/template">
+				<p>Существует</p><b>прямые и итерационные методы решения</b>
+			
+				Note: 
+				Существует прямые и итерационные методы решения
+				</script>
+				</section>
+				
+				
+				
+				<section data-markdown data-separator-nodes="^Note:"> 
+				<script type="text/template">
+				## Прямые методы решения систем линейных уравнений
+			
+				Note: Прямые методы решения СЛАУ
+				</script>
+				</section>
+				
+				
+				
+				<section data-markdown data-separator-nodes="^Note:"> 
+				<script type="text/template">
+				## Некоторые прямые методы решения СЛАУ: 
+				1. Метод Гаусса
+				2. Метод Гаусса-Жордана
+				3. Метод LU - разложения
+				4. Метод квадратных корней
+				5. Метод Крамера
+			
+				Note: Некоторые прямые методы (Гаусса, Гаусса-Жордана, LU, квадратных корней и так далее)
+				</script>
+				</section>
+				
+				
+				
+				
+				
+				<section data-markdown data-separator-nodes="^Note:"> 
+				<script type="text/template">
+				 <p>Мы разберем</p> <b>Алгоритм Гаусса</b>
+			
+				Note: Выбор алгоритма 
+				</script>
+				</section>
+				
+				
+				
+								
+				
+				<section data-markdown data-separator-nodes="^Note:"> 
+				<script type="text/template">
+				## Метод Гаусса
+			
+				Note: Прямые методы решения СЛАУ
+				</script>
+				</section>
+				
+				
+				
+				
+				<section data-markdown data-separator-nodes="^Note:"> 
+				<script type="text/template">
+				#### Метод Гаусса идеально подходит для решения систем содержащих больше трех линейных уравнений, для решения систем уравнений, которые не являются квадратными
+				
+				Note: о методе Гаусса
+				</script>
+				</section>
+				
+				
+				
+				
+				<section data-markdown data-separator-nodes="^Note:"> 
+				<script type="text/template">
+				#### Метод Гаусса включает в себя прямой и обратный ходы.
+				
+				Note: Ходы метода Гаусса
+				</script>
+				</section>
+				
+				
+				
+				<section data-markdown data-separator-nodes="^Note:"> 
+				<script type="text/template">
+				#### Прямой ход
+				включает в себя приведение расширенной матрицы к ступенчатому виду, то есть получение нулей под главной диагональю.
+				
+				Note: Прямой ход метода Гаусса
+				</script>
+				</section>
+				
+						
+
+						
+				<section data-markdown data-separator-nodes="^Note:"> 
+				<script type="text/template">
+				####  Обратный ход 
+				включает в себя получение нулей над главной диагональю расширенной матрицы.
+				
+				Note: Обратный ход метода Гаусса
+				</script>
+				</section>
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						### Программа
+					</script>
+				</section>
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						### Дана система уравнений заданной размерности n = 3
+						
+						<div class="left">
+							<table class="Gauss">
+								<tr>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+								</tr>
+								<tr>
+									<th><input type="text", name="a1", id="1"> x + </th>
+									<th><input type="text", name="a2", id="2"> y + </th>
+									<th><input type="text", name="a3", id="3"> z = </th>
+									<th><input type="text", name="c1", id="4"> </th>
+								</tr>
+								<tr>
+									<th><input type="text", name="a4", id="5"> x + </th>
+									<th><input type="text", name="a5", id="6"> y + </th>
+									<th><input type="text", name="a6", id="7"> z = </th>
+									<th><input type="text", name="c2", id="8"></th>
+								</tr>
+								<tr>
+									<th><input type="text", name="a7", id="9"> x + </th>
+									<th><input type="text", name="a8", id="10"> y + </th>
+									<th><input type="text", name="a9", id="11"> z = </th>
+									<th><input type="text", name="c3", id="12"></th>
+								</tr>
+							</table>			
+							<input type="button" value="Расчитать" name="Calc1" OnClick="Calc();">
+						</div>
+						
+						
+						Note:
+						Матрица коэффициентов
+					</script>
+				</section>				
+			
+			
+			
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Программа
+						---------
+						```
+						//Прямой ход: обнуление нижнего треугольника
+						for (k = 1; n-1; k++) 
+						{
+							for (i = k+1; n; i++)
+							{
+								b[i] = b[i] - (A[i,k] * b[i]) / A[k,k];
+					
+								for (j = 1; n; j++)
+								{
+									A[i,j] = A[i,j] - (A[i,k] * A[k,j]) / A[k,k]; 
+								}
+							}
+						}				
+						```
+						
+						Note:
+						прямой ход
+					</script>
+				</section>
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Программа
+						---------
+						```
+						//Обратный ход: обнуление верхнего треугольника
+						for (k = N; 1; k--) 
+						{
+							for (i = 1; k-1; i++)
+							{
+								b[i] = b[i] - (A[i,k] * b[k]) / A[k,k];
+					
+								for (j = 1; n; j++)
+								{
+									A[i,j] = A[i,j] - (A[i,k] * A[k,j]) / A[k,k]; 
+								}
+							}
+						}		
+						```
+						
+						Note:
+						обратный ход
+					</script>
+				</section>
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Программа
+						---------
+						```
+						//Делим элементы массива b на диагональные элементы матрицы А.
+						//Решение: элементы массива b
+						for (i = 1; n; i++)
+						{
+							b[i] = b[i] / A[i,i];
+						}		
+						```
+					</script>
+				</section>
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						### Пример решения СЛАУ методом Гаусса
+					</script>
+				</section>
+				
+				<section data-background-image="image/1.jpg" data-menu-title="Метод Гаусса 1">
+				</section>
+	
+
+	
+				<section data-background-image="image/2.jpg" data-menu-title="Метод Гаусса 2">
+				</section>
+
+
+				
+				<section data-background-image="image/3.jpg" data-menu-title="Метод Гаусса 3">
+				</section>
+
+
+				
+				<section data-background-image="image/4.jpg" data-menu-title="Метод Гаусса 4">
+				</section>
+				
+				
+				<section data-markdown data-separator-nodes="^Note:"> 
+				<script type="text/template">
+				#### Продемонстрирую пример решения СЛАУ методом Гаусса в видео-материале
+				//почему-то отказывается показывать видео в следующем слайде(делала по примеру) 
+				
+				Note: видео-материал
+				</script>
+				</section>	
+				
+				
+				
+				<section data-background-iframe="https://youtu.be/cd-OXBjy5Ec" 
+				data-background-interactive data-menu-title="Лекция на Youtube Метод Гаусса">
+				</section>
+				
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Нелинейные уравнения
+						==================
+					</script>
+				</section>
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						### Нелинейное уравнение
+						
+						Уравнение вида $f(x)=0$ называется нелинейным, если функция  $f$ - нелинейна. 
+						
+						
+						Note:
+						Уравнение вида $f(x)=0$ называется нелинейным, если функция  $f$ - нелинейна.
+					</script>
+				</section>
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						### Решение нелинейного уравнения
+						
+						Решить нелинейное уравнение - найти такое $x$, при котором уравнение обращается в тождество, или доказать, что таких $x$ $\neg\exists$
+						
+						
+						Note:
+						Решить нелинейное уравнение - найти такое $x$, при котором уравнение обращается в тождество, или доказать, что таких $x$ не существует.
+					</script>
+				</section>
+				
+				
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						
+						Пусть $ x_0 $ удоавлетворяет уравнению $f(x)=0\;(1)$, то есть $f(x_0)=0$. Будем говорить, что $\xi$ - <b>обобщенное решение уравнения</b> $(1)$, если $\forall
+						\varepsilon > 0$ выполняется хотя бы одно из неравенст $|f(\xi)|<\varepsilon$ или $|\xi-x_0|<\varepsilon$
+						
+						
+						Note:
+						Решить нелинейное уравнение - найти такое $x$, при котором уравнение обращается в тождество, или доказать, что таких $x$ не существует.
+					</script>
+				</section>
+				
+				
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						##### Методы решения нелинейного уравнения
+						
+						Все методы для решения нелинейных уравнений и систем являются итерационными
+						
+						
+						Note:
+						Все методы для решения нелинейных уравнений и систем являются итерационными
+					</script>
+				</section>
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						###### Итерационный метод - 
+						
+						это численный и приближенный метод решения СЛАУ
+						
+						Note:
+						Определение итерационного метода
+					</script>
+				</section>
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						###### Суть итерационного метода:
+						
+						нахождение по приближённому значению величины следующего приближения, которое является более точным. 
+						
+						Характер сходимости и сам факт сходимости метода зависит от выбора начального приближения корня $x_0$
+
+												
+						Note:
+						Суть итерационного метода
+					</script>
+				</section>
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						#### Итерационные методы:
+						
+						1. Локализации корней.
+						2. Метод половинного деления.
+						3. Метод Ньютона-Рафсона
+						4. Метод секущих
+						5. Комбинированный методы.
+						6. Метод простых итераций.
+						7. Метод спуска.
+						8. Метод Брауна.
+						
+						Note:
+						Список итерационных методов
+					</script>
+				</section>
+				
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						### Метод половинного деления
+						
+						Note:
+						Метод половинного деления
+					</script>
+				</section>
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						#### Метод половинного деления:
+						
+						$\sqsupset$ известно, что непрерывная на отрезке $[a,b]$ функция $f(x)$ в точках $a$ и $b$ имеет разные знаки.
+						
+						Тогда, как известно из курса математического анализа, на этом отрезке имеется хотя бы один корень.
+						
+						Note:
+						Метод половинного деления
+					</script>
+				</section>
+				
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						#### Идея метода:
+						
+						отрезок, где находится хотя бы один корень, делится на два равных отрезка и из них выбирается тот, 
+						на концах которого функция опять имеет разные знаки. 
+						Далее, с полученным отрезком опять проделываем ту же операцию.
+						Так как длина отрезка каждый раз уменьшается в два раза, то после $n$ шагов получим отрезок длины $\frac{b-a}{2^n}$, который содержит корень $x_0$ 
+
+					</script>
+				</section>
+				
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						### Пример решения итерационным методом
+					</script>
+				</section>
+				
+				
+				<section data-background-iframe="image/5.png"> 
+				</section>
+				
+				
+				
+				
+				<section data-background-iframe="image/6.png"> 
+				</section>
+				
+				
+				
+				
+				<section data-background-iframe="image/7.png"> 
+				</section>
+				
+				
+				
+				
+				<section data-background-iframe="image/8.png"> 
+				</section>
+				
+				
+				
+				
+				<section data-background-iframe="image/9.png"> 
+				</section>
+				
+				
+				
+				<section data-background-iframe="image/10.png"> 
+				</section>
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						### Программа
+					</script>
+				</section>
+				
+
+				
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						
+						<FORM name="form1">
+						<pre>
+						Введите функцию: <input type="text" size=20 name="func"><hr>
+						Введите левую границу отрезка: <input type="text" size=5 name="left"><hr> 
+						Введите правую границу отрезка: <input type="text" size=5 name="right"><hr> 
+						Задайте требуемую точность: <input type="text" size=5 name="eps"><hr> 
+						<input type="button" value="Вычислить" onclick="form1.res.value=fbin(form1.left.value,form1.right.value, form1.eps.value)"><hr>
+						Корень уравнения равен: <input type="text" size=30 name="res"><hr> 
+						<input type="button" value="Тест" onClick="ftest(forml)"><hr> 
+						Тест: <input type="text" size=30 name="test"><hr> 
+						<input type="reset" value=Отменить>
+						</pre>
+						</FORM> 
+						
+						Note:
+						
+						[//]: комментарий
+					</script>
+				</section>	
+				
+				
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Апроксимация
+						-----------
+						
+						Note:
+						Новый раздел
+					</script>
+				</section>
+				
+				
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						##### Аппроксимация — 
+						это способ нахождения функции, которая наиболее соответствует таблице значений.
+					</script>
+				</section>
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						#### Методы приближения функций и аппроксимации:
+						
+						1. Интерполяционный многочлен Лагранжа.
+						2. Интерполяционный многочлен Ньютона.
+						3. Интерполяционный многочлен Эрмита.
+						4. Интерполирование сплайнами.
+						5. Метод наименьших квадратов.
+						
+						Note:
+						Список итерационных методов
+					</script>
+				</section>
+				
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						### Интерполяционный многочлен Ньютона
+						
+						Note:
+						Интерполяционный многочлен Ньютона
+					</script>
+				</section>
+				
+				
+				
+					<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						$\sqsupset$ функция $f(x)$ задана таблицей 
+						<table class="Table">
+								<tr>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+								</tr>
+								<tr>
+									<th>$x$</th>
+									<th>$x_0$</th>
+									<th>$x_1$</th>
+									<th>$...$</th>
+									<th>$x_n$</th>
+								</tr>
+								<tr>
+									<th>$f(x)$ </th>
+									<th>$f(x_0)$</th>
+									<th>$f(x_1)$</th>
+									<th>$...$</th>
+									<th>$f(x_n)$</th>
+								</tr>
+							</table>			
+
+						[//]: коментарий
+						
+						Note:
+						Интерполяционный многочлен Ньютона
+					</script>
+				</section>
+				
+				
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						#### Разделенные разности нулевого порядка - 
+					
+						значения табличной функции $f(x_0), f(x_1), ..., f(x_n)$.
+							
+						
+						Note:
+						Интерполяционный многочлен Ньютона
+					</script>
+				</section>
+				
+				
+				
+				
+				
+					<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						#### Разделенные разности первого порядка - 
+						
+						$f(x_i;x_{i+1}$) // не удается записать формулу для функции с двумя аргументами(ругается на индекс во втором аргументе). Поэтому дальше не могу дописать весь алгоритм.
+							
+						
+						Note:
+						Интерполяционный многочлен Ньютона
+					</script>
+				</section>
+				
+				
+				
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+			history:true,
+				dependencies: [
+					{src: 'plugin/katex/katex.js', async:true },
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
