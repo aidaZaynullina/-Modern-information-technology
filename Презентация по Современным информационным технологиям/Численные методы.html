@@ -22,10 +22,11 @@
 		</script>
 		
 		<script>
+			
 			function Calc()
 			{
 				var k;
-				int n = 3;									
+				var n = 3;									
 				var b = new Array(3);
 				var A = new Array(3,3);
 									
@@ -98,7 +99,7 @@
 
 			var fa = eval(fs); //значение функции в точке 
 
-			var  = b; 	 
+			var x = b; 	 
 
 			var fc; 
 
@@ -430,23 +431,38 @@
 					</script>
 				</section>
 				
-				<section data-background-image="image/1.jpg" data-menu-title="Метод Гаусса 1">
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Дана система уравнений:
+					
+						$x + y + z = 3$<br>
+						$2x - y + z = 1$<br>
+						$-x + y - z = -1$
+						
+					</script>
 				</section>
 	
+	
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						При помощи приведения системы к ступенчатому виду, получаем следующий результат:<br><br>
+						$x + y + z = 3$<br>
+						$\; -3y -z = 5$<br>
+						$\;\;\;\;\;\;\;\;\;\;\;\;y = 3$<br>
+					</script>
+				</section>
+				
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Итак, система имеет единственное решение:<br><br>
+						$x = 0$<br>
+						$y = 1$<br>
+						$z = 2$<br>
+					</script>
+				</section>
 
 	
-				<section data-background-image="image/2.jpg" data-menu-title="Метод Гаусса 2">
-				</section>
-
-
-				
-				<section data-background-image="image/3.jpg" data-menu-title="Метод Гаусса 3">
-				</section>
-
-
-				
-				<section data-background-image="image/4.jpg" data-menu-title="Метод Гаусса 4">
-				</section>
 				
 				
 				<section data-markdown data-separator-nodes="^Note:"> 
@@ -460,7 +476,8 @@
 				
 				
 				
-				<section data-background-iframe="https://youtu.be/cd-OXBjy5Ec" 
+				<section data-background-iframe="https://www.youtube.com/embed/cd-OXBjy5Ec" 
+				
 				data-background-interactive data-menu-title="Лекция на Youtube Метод Гаусса">
 				</section>
 				
@@ -633,37 +650,164 @@
 				</section>
 				
 				
-				<section data-background-iframe="image/5.png"> 
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						### Пример:<br>
+						найти экстремум функции $f(x)=5x^2-4x+1$ методом дихотомии, если $\varepsilon = 0.1$, а исходный интервал равен $[0,10].$
+					</script>
 				</section>
 				
 				
-				
-				
-				<section data-background-iframe="image/6.png"> 
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+					$1)$ Находим производную  функции: $f'(x)$=10x-4<br>
+					$2)$ Найдем нули функции дихотомией: $f'(x)=0$<br>
+					$3)$ Так как $F(0)*F(10)<0$, то есть значения функции на его концах имеют противоположные знаки, то корень лежит в пределах $[0,10].$
+					</script>
 				</section>
 				
 				
-				
-				
-				<section data-background-iframe="image/7.png"> 
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+					#### Итерация №1<br>
+					$1)$ Находим середину отрезка: $c = (0+10)/2=5$<br>
+					$2)$ $F(x)=46$<br>
+					$3)$ $F(c)=-4$<br>
+					$4)$ Поскольку $F(c)*F(a)<0$, то $b = 5$
+					</script>
 				</section>
 				
 				
-				
-				
-				<section data-background-iframe="image/8.png"> 
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+					#### Итерация №2<br>
+					$1)$ Находим середину отрезка: $c = (0+5)/2=2.5$<br>
+					$2)$ $F(x)=21$<br>
+					$3)$ $F(c)=46$<br>
+					$4)$ Поскольку $F(c)*F(a)<0$, то $b = 2.5$
+					</script>
 				</section>
 				
 				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+					#### Итерация №3<br>
+					$1)$ Находим середину отрезка: $c = (0+2.5)/2=1.25$<br>
+					$2)$ $F(x)=8.5$<br>
+					$3)$ $F(c)=21$<br>
+					$4)$ Поскольку $F(c)*F(a)<0$, то $b = 1.25$
+					</script>
+				</section>
 				
-				
-				<section data-background-iframe="image/9.png"> 
+						
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+					#### Итерация №4<br>
+					$1)$ Находим середину отрезка: $c = (0+1.25)/2=0.625$<br>
+					$2)$ $F(x)=2.25$<br>
+					$3)$ $F(c)=8.5$<br>
+					$4)$ Поскольку $F(c)*F(a)<0$, то $b = 0.625$
+					</script>
 				</section>
 				
 				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						### Остальные данные запишем в таблицу:
+						
+						<div class="right">
+							<table class="Table2">
+								<tr>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+								</tr>
+								<tr>
+									<th>$N$</th>
+									<th>$c$</th>
+									<th>$a$</th>
+									<th>$b$</th>
+									<th>$f(c)$</th>
+									<th>$f(x)$</th>
+									<th>$\varepsilon$</th>
+								</tr>
+								<tr>
+									<th>$1$</th>
+									<th>$5$</th>
+									<th>$10$</th>
+									<th>$5$</th>
+									<th>$-4$</th>
+									<th>$46$</th>
+									<th>$5$</th>
+								</tr>
+								<tr>
+									<th>$2$</th>
+									<th>$2.5$</th>
+									<th>$5$</th>
+									<th>$2.5$</th>
+									<th>$46$</th>
+									<th>$21$</th>
+									<th>$2.5$</th>
+								</tr>
+								<tr>
+									<th>$3$</th>
+									<th>$1.25$</th>
+									<th>$2.5$</th>
+									<th>$1.25$</th>
+									<th>$21$</th>
+									<th>$8.5$</th>
+									<th>$1.25$</th>
+								</tr>
+								<tr>
+									<th>$4$</th>
+									<th>$0.625$</th>
+									<th>$1.25$</th>
+									<th>$0.625$</th>
+									<th>$8.5$</th>
+									<th>$2.25$</th>
+									<th>$0.625$</th>
+								</tr>
+								<tr>
+									<th>$5$</th>
+									<th>$0.3125$</th>
+									<th>$0.625$</th>
+									<th>$0.3125$</th>
+									<th>$2.25$</th>
+									<th>$-0.875$</th>
+									<th>$0.3125$</th>
+								</tr>
+								<tr>
+									<th>$6$</th>
+									<th>$0.4688$</th>
+									<th>$0.625$</th>
+									<th>$0.4688$</th>
+									<th>$-0.875$</th>
+									<th>$0.6875$</th>
+									<th>$0.1563$</th>
+								</tr>
+							</table>								
+						</div>
+						
+						Note:
+						Матрица результатов итераций
+					</script>
+				</section>		
 				
-				<section data-background-iframe="image/10.png"> 
+				
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+					Таким образом, в качестве корня можно принять:<br>
+					$x = (0.3125+0.4687)/2=0.3906$<br>
+					<b>Ответ: $x = 0.3906, F(x) = 0.6875$</b><br>
+					Количество итераций = $6.$<br>
+					</script>
 				</section>
+				
+				
 				
 				
 				<section data-markdown data-separator-notes="^Note:">
